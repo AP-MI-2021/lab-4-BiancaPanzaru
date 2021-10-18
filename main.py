@@ -106,12 +106,32 @@ def aparitii(lst, n):
 def test_aparitii():
     assert aparitii([2,3,4,5,4,1],4) == 2
 
+def tuplu(lst):
+    """
+     Afișarea listei obținute din lista inițială în care numerele sunt înlocuite cu un tuplu în care pe
+prima poziție este numărul, pe a doua poziție va fi indexul elementului din listă, iar pe a treia
+poziție apare numărul de apariții a numărului.
+    :param lst: lista numere intregi
+    :return: tuplul
+    """
+    newlst3=[]
+    for i in range (len(lst)):
+        nraparitii = aparitii(lst, lst[i])
+        tuplu = (lst[i], i , nraparitii)
+        newlst3.append(tuplu)
+    return newlst3
+
+def test_tuplu():
+    assert tuplu([25, 13, 26, 13]) == [(25, 0, 1), (13, 1, 2), (26, 2, 1), (13, 3, 2)]
+    assert tuplu([17,8,8]) == [(17,0,1), (8,1,2), (8,2,2)]
+
 
 def printMenu():
     print("1. Citire lista")
     print("2. Afișarea listei după eliminarea numerelor prime din listă")
     print("3. Să se afișeze dacă media aritmetică a numerelor este mai mare decât un număr n dat.")
     print("4. Afișarea listei obținută prin adăugarea după fiecare element numărul de divizori proprii ai elementului")
+    print("5. Tuplul")
     print("x.Iesire")
 
 
@@ -132,6 +152,8 @@ def main():
                 print("NU")
         elif optiune == "4":
             print(inseraredivizoriinLista(lst))
+        elif optiune == "5":
+            print(tuplu(lst))
         elif optiune == "x":
             break
         else:
@@ -144,4 +166,5 @@ if __name__ == "__main__":
     test_nrDiv()
     test_inserare()
     test_aparitii()
+    test_tuplu()
     main()
